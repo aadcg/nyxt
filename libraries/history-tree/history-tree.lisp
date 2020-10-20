@@ -244,8 +244,8 @@ First child comes first."
 If ENSURE-P is non-nil, create this node when not found.
 Search is done with the help of TEST argument."
   ;; TODO: Use caching to speed access up?
-  (let ((found (find data (htree:all-nodes history) :key #'data :test test)))
-    (if (and (not found) ensure-p)
+  (let ((match (find data (htree:all-nodes history) :key #'data :test test)))
+    (if (and (not match) ensure-p)
         (htree:add-child data history :test test)
         found)))
 
